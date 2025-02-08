@@ -1,5 +1,7 @@
 package fundamental.array;
 
+import java.util.Arrays;
+
 public class MultidimensionalArray {
 	public static void main(String[] args) {
 		// Rectangular 2D array (3x3)
@@ -28,7 +30,7 @@ public class MultidimensionalArray {
 
 		// Nested For-Loops (2D)
 		for (int i = 0; i < grid.length; i++) {
-			for(int j = 0; i < grid[i].length; j++) {
+			for (int j = 0; i < grid[i].length; j++) {
 				System.out.print(grid[i][j] + " ");
 			}
 			System.out.println();
@@ -41,5 +43,31 @@ public class MultidimensionalArray {
 			}
 			System.out.println();
 		}
+
+		// 3D Board Initialization
+		char[][][] cube1 = new char[3][3][3];
+
+		// Initialize with empty spaces
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				Arrays.fill(cube1[i][j], '-');
+			}
+		}
+	}
+
+	public boolean checkWin(char[][][] cube, char player) {
+		// Check all rows, columns, and diagonals in 3D
+		// Example: Check vertical columns across layers
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (cube[0][i][j] == player &&
+						cube[1][i][j] == player &&
+						cube[2][i][j] == player) {
+					return true;
+				}
+			}
+		}
+		// Add checks for other dimensions...
+		return false;
 	}
 }
